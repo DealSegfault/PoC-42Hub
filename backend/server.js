@@ -3,9 +3,11 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const express = require('express');
 const cors = require("cors")
+const mongoose = require("mongoose")
 
 
-const config = require('../config/config');
+
+const config = require('./config/config');
 
 
 
