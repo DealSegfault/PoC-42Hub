@@ -4,8 +4,9 @@ const morgan = require('morgan');
 const express = require('express');
 const cors = require("cors")
 const mongoose = require("mongoose")
+const passport = require('passport');
 
-
+require('./services/passport');
 
 const config = require('./config/config');
 
