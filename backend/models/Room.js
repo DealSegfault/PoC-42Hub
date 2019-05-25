@@ -2,7 +2,13 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-    state: { // NAN, RES, OCC
+    reserveState: { // NAN, RES, OCC
+        type: String,
+    },
+    roomExpiration: {
+        type: String,
+    },
+    alertState: { // RAS, MOVEMENT, ALERT
         type: String,
     },
     roomId: {

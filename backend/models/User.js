@@ -27,12 +27,6 @@ const UserSchema = new Schema({
   roomId: {
     type: String,
   },
-  roomExpiration: {
-    type: String,
-  },
-  roomState: { // RAS, MOVEMENT, ALERT
-    type: String,
-  },
 }, { strict: true });
 
 module.exports = mongoose.model('User', UserSchema);
