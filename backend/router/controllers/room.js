@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const dbUser = require("../../models/User");
+const dbRoom = require("../../models/Room");
 
-router.route("/user").post(async (req, res) => {
-  let user = new dbUser(req.body);
-  user.save()
+router.route("/room").post(async (req, res) => {
+  let room = new dbRoom(req.body);
+  room.save()
     .then(response => {
       res.json({
         status: true,
@@ -19,8 +19,8 @@ router.route("/user").post(async (req, res) => {
     });
 });
 
-router.route("/user").get(async (req, res) => {
-  dbUser.find().then((data) => {
+router.route("/room").get(async (req, res) => {
+  dbRoom.find().then((data) => {
       res.json({
           status: true,
           result: data
