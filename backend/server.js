@@ -6,7 +6,7 @@ const cors = require("cors")
 const mongoose = require("mongoose")
 const passport = require('passport');
 
-// require('./services/passport');
+require('./services/passport');
 
 const config = require('../backend/config/config');
 
@@ -26,18 +26,7 @@ const allowCrossDomain = (req, res, next) => {
   next();
 }
 
-// const path = require('path')
-// // Serve static files from the React frontend app
-// app.use(express.static(path.join(__dirname, 'tracker/build')))
-// // Anything that doesn't match the above, send back index.html
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname + '/tracker/build/index.html'))
-// })
-
-
 app.use(allowCrossDomain);
-
-
 // MongoDb
 mongoose.connect(`mongodb+srv://root:${config.mongo.password}@hubguardian-13shh.mongodb.net/test`, {
   useNewUrlParser: true,
