@@ -1,8 +1,8 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom'
-import Login from './components/Login'
-import Profile from './components/Profile'
-import SecurityMap from './components/SecurityMap'
+import Login from './components/Login/loginComponent'
+import Profile from './components/Profile/profileComponent'
+import SecurityMap from './components/SecurityMap/securityMap'
 
 const Routes = () => {
     return (
