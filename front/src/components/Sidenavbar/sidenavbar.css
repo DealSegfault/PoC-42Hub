@@ -1,0 +1,25 @@
+#sidenavbar_container {
+    position: fixed;
+    background: #1a1e21;
+    width: 15rem;
+    min-height: 100vh;
+}
+
+#navbar_title {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-content: center;
+    margin: 1rem;
+    color: white;
+    font-family: 'Mandali', sans-serif;
+}
+
+#title {
+    font-size: 2rem;
+}
+
+#navbar_logo {
+    width: 3rem;
+    height: 3rem;
+}
