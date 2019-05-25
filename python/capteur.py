@@ -1,4 +1,4 @@
-import serial
+import serial, requests
 
 tab = []
 moy = 0
@@ -18,3 +18,4 @@ with serial.Serial("/dev/tty.usbmodem1D1311", 9600, timeout=1) as serialPort:
                         moy = int(moy / len(tab))
                 elif abs(dist - moy) > 2:
                     print('+' * 50 + f"\nALERT\t\t{dist}\n" + '+' * 50)
+                    requests.get('127.0.0.1:3000/sensor')
