@@ -1,4 +1,5 @@
 import serial, requests
+from datetime import datetime
 
 tab = []
 moy = 0
@@ -17,5 +18,6 @@ with serial.Serial("/dev/tty.usbmodem1D1311", 9600, timeout=1) as serialPort:
                             moy += i
                         moy = int(moy / len(tab))
                 elif abs(dist - moy) > 2:
+                    print (datetime.now().strftime('%X.%f %x %Z'))
                     print('+' * 50 + f"\nALERT\t\t{dist}\n" + '+' * 50)
-                    requests.get('127.0.0.1:3000/sensor')
+                    requests.get('http://localhost:7777/api/signal')

@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {loginUser} from '../../actions/authActions'
 import './login.css'
 import Alert from "../Widget/Alert/alertComponent";
-
+import { Link } from 'react-router-dom'
 class LoginComponent extends Component {
 
     state = {
@@ -38,7 +38,11 @@ class LoginComponent extends Component {
         return (
             <form id={'login_container'} onSubmit={this.submitForm}>
                 <Alert alert={alert} handleAlert={this.handleAlert}/>
-                <button id={'login_button'}><img id={'logo_button'} src={'/assets/logo-42.png'}/>Connect</button>
+                {/* <a href="https://localhost:3000/hub"> */}
+                <Link to={`/hub`}>
+                    <button id={'login_button'}><img id={'logo_button'} src={'/assets/logo-42.png'}/>Connect</button>
+                </Link>
+                {/* </a> */}
             </form>
         );
     }

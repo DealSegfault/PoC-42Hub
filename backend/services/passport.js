@@ -14,7 +14,7 @@ passport.serializeUser(function(user, cb) {
 passport.use(new FortyTwoStrategy({
     clientID: keys.fortyTwoClientID,
     clientSecret: keys.fortyTwoClientSecret,
-    callbackURL: 'http://localhost:3000/login/42/return'
+    callbackURL: 'http://localhost:7777/api/login/42/return'
   },
   function(accessToken, refreshToken, profile, cb) {
     // In this example, the user's 42 profile is supplied as the user
@@ -22,5 +22,6 @@ passport.use(new FortyTwoStrategy({
     // be associated with a user record in the application's database, which
     // allows for account linking and authentication with other identity
     // providers.
+    console.log("bonjour")
     return cb(null, profile);
   }));

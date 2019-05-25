@@ -1,14 +1,14 @@
 const express = require("express");
 const router = express.Router();
-const users = require("../../models/User");
+const room = require("../../models/Room");
 
 router.route("/signal").get(async (req, res) => {
-    const roomId = req.query.id;
-    users.updateOne({
-        roomId: roomId
+    const roomId = "1"//req.query.id;
+    room.updateOne({
+        roomId: roomId 
     }, {
             roomExpiration: Date.now().toString(),
-            roomState: 'MOVEMENT'
+            alertState: 'MOVEMENT'
         })
         .then((value) => {
             res.json({
@@ -26,12 +26,36 @@ router.route("/signal").get(async (req, res) => {
 });
 
 router.route("/abort").get(async (req, res) => {
-    const roomId = req.query.id;
-    users.updateOne({
+    const roomId = "1" //req.query.id;
+    room.updateOne({
         roomId: roomId
     }, {
             roomExpiration: '',
-            roomState: 'RAS'
+            alertState: 'RAS'
+        })
+        .then((value) => {
+            res.json({
+                status: true,
+                time: Date.now(),
+                req: roomId,
+                result: value
+            });
+        }).catch((error) => {
+            res.json({
+                status: false,
+                result: error
+            });
+        });
+});
+
+
+router.route("/alert").get(async (req, res) => {
+    const roomId = "1" //req.query.id;
+    room.updateOne({
+        roomId: roomId
+    }, {
+            roomExpiration: '',
+            alertState: 'ALERT'
         })
         .then((value) => {
             res.json({

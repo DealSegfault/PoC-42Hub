@@ -6,7 +6,7 @@ const cors = require("cors")
 const mongoose = require("mongoose")
 const passport = require('passport');
 
-require('./services/passport');
+
 
 const config = require('../backend/config/config');
 
@@ -27,6 +27,8 @@ const allowCrossDomain = (req, res, next) => {
 }
 
 app.use(allowCrossDomain);
+
+require('./services/passport');
 // MongoDb
 mongoose.connect(`mongodb+srv://root:${config.mongo.password}@hubguardian-13shh.mongodb.net/test`, {
   useNewUrlParser: true,
@@ -37,6 +39,9 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
   console.log("DB connection alive");
 });
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Router
 const router = require('./router/index');
