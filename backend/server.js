@@ -6,7 +6,7 @@ const cors = require("cors")
 const mongoose = require("mongoose")
 const passport = require('passport');
 
-require('./services/passport');
+// require('./services/passport');
 
 const config = require('../backend/config/config');
 
