@@ -10,9 +10,9 @@ const Routes = (props) => {
     return (
         <Switch>
             <Route path={'/'} exact component={Login}/>
+            <Route path={'/hub'} exact component={Hub}/>
             <Layout>
                 <Route path={'/security_map'} exact component={SecurityMap} />
-                {/*<Route path={'/security_map'} exact component={SecurityMap} />*/}
             </Layout>
         </Switch>
     );

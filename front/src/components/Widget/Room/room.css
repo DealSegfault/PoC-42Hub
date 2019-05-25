@@ -2,9 +2,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .room_status {
     width: 2.5rem;
     height: 2.5rem;
+}
+
+
+.room_id span {
+    margin-left: -9px !important;
 }

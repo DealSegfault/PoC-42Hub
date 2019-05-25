@@ -13,7 +13,7 @@
 }
 
 .success {
-    background: lightgreen;
+    background: forestgreen;
 }
 
 .error {
@@ -26,9 +26,11 @@
 }
 
 #alert_message {
-    margin: 1.5rem;
+    margin: 1.2rem;
     cursor: default;
+    font-size: 1.2rem;
     user-select: none;
+    color: white;
 }
 
 #alert_close_button {

@@ -23,7 +23,7 @@ class SideNavbar extends Component {
         return (
             <div id={'sidenavbar_container'}>
                 <div id={'navbar_title'}>
-                    <p id={'title'}>HUB</p>
+                    <p id={'title'}>NOC</p>
                     <img id={'navbar_logo'} src={'/assets/logo-42.png'}/>
                 </div>
                 <ul id={'sidenavbar_list'}>

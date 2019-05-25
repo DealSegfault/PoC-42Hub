@@ -1,11 +1,17 @@
 #table_container {
-    width: 50%;
+    width: 60%;
 }
 
 #line_container {
 }
 
+.case_container div:first-child {
+    width: 100%;
+}
+
 .case_container {
+    width: 10%;
+    height: 8.5vh;
     background: whitesmoke;
     border-radius: 5px;
 }

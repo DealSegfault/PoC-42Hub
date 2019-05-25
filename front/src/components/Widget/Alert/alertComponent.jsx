@@ -10,7 +10,6 @@ class Alert extends Component {
     };
 
     componentWillReceiveProps(nextProps, nextContext) {
-        console.log(nextProps);
         if (nextProps !== this.props && nextProps.alert && nextProps.alert.message !== '') {
             this.setState({
                 step: 2
@@ -39,6 +38,7 @@ class Alert extends Component {
 
     render() {
         let alert = this.props.alert;
+        console.log(alert.message);
         let type = this.props.alert.type === 'error' ? 'error' : 'success';
         return (
             <div id={'alert_container'} className={classnames(`${type}`, {'active_alert': this.state.step === 2})}>

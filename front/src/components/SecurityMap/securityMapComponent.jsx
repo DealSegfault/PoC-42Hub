@@ -20,7 +20,7 @@ class SecurityMap extends Component {
     render() {
         return (
             <div id={'security_map_container'}>
-                <h2>Metropolis</h2>
+                <h2 id={'cluster_title'}>EARTH-616</h2>
                 <Cluster student={this.props.map}/>
             </div>
         );
