@@ -18,7 +18,6 @@ for result in jsonData:
         'firstname': result['name']['first'],
         'lastname': result['name']['last'],
         'img': result['picture']['medium'],
-        'fortyTwoId': random.randrange(10000000000000000),
         'language': result['nat'].lower(),
         'roomId': str(count),
         'roomState': 'RAS'
