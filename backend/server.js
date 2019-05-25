@@ -8,10 +8,7 @@ const passport = require('passport');
 
 require('./services/passport');
 
-const config = require('./config/config');
-
-
-
+const config = require('../backend/config/config');
 
 const port = process.env.PORT || 7777;
 app.use(morgan('dev')); // log requests to the console

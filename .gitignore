@@ -1,1 +1,4 @@
 /.idea
+nodes_modules/
+/front/package-lock.json
+/backend/package-lock.json
