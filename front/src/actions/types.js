@@ -5,6 +5,6 @@ export const LOGOUT_USER = 'LOGOUT_USER';
 
 /* REQUEST TYPES */
 
-export const FETCH_BED = 'FETCH_BED';
+export const SECURITY_MAP = 'SECURITY_MAP';
 export const ALERT = 'ALERT';
 

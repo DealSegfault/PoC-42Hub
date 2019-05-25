@@ -1,7 +1,17 @@
+@font-face {
+    font-family: 'Futured';
+    src: url('/assets/futured/Futured.TTF') format('truetype')
+}
+
+p {
+    padding: 0;
+    margin: 0;
+}
+
 #sidenavbar_container {
     position: fixed;
     background: #1a1e21;
-    width: 15rem;
+    width: 17.5rem;
     min-height: 100vh;
 }
 
@@ -9,17 +19,41 @@
     display: flex;
     width: 100%;
     justify-content: center;
-    align-content: center;
-    margin: 1rem;
+    align-items: center;
+    margin: 1rem 0;
     color: white;
     font-family: 'Mandali', sans-serif;
 }
 
 #title {
-    font-size: 2rem;
+    font-size: 3rem;
+    font-family: 'Futured', sans-serif;
 }
 
 #navbar_logo {
-    width: 3rem;
-    height: 3rem;
+    width: 5rem;
+    height: 5rem;
+}
+
+#sidenavbar_list {
+    margin: 0;
+    padding: 0;
+}
+
+.item_li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4rem;
+    text-decoration: none;
+    outline: none;
+    width: 100%;
+    color: white;
+    font-size: 1.5rem;
+    list-style-type: none;
+    cursor: pointer;
+}
+
+.item_li:hover {
+    background: #363636;
 }
