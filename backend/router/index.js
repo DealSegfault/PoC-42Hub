@@ -6,10 +6,8 @@ router.use((req, res, next) => {
   next();
 });
 
-router.use('/api', require('./controllers/position'));
-router.use('/api', require('./controllers/orders'));
-router.use('/api', require('./controllers/balance'));
-
-
+router.use('/api', require('./controllers/user'));
+router.use('/api', require('./controllers/get_users'));
+router.use('/api', require('./controllers/sentinelle'));
 
 module.exports = router;
