@@ -1,8 +1,10 @@
-import serial, requests
+import serial, requests, time, os
 from datetime import datetime
 
 tab = []
 moy = 0
+
+sound_launched = False
 
 with serial.Serial("/dev/tty.usbmodem1D1311", 9600, timeout=1) as serialPort:
     if serialPort.isOpen():
@@ -21,3 +23,5 @@ with serial.Serial("/dev/tty.usbmodem1D1311", 9600, timeout=1) as serialPort:
                     print (datetime.now().strftime('%X.%f %x %Z'))
                     print('+' * 50 + f"\nALERT\t\t{dist}\n" + '+' * 50)
                     requests.get('http://localhost:7777/api/signal')
+                    if not sound_launched:
+                        os.open('alert.mov')
