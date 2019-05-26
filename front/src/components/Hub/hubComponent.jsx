@@ -5,6 +5,12 @@ import profileService from '../../services/profile-service'
 import roomService from '../../services/room-service'
 import './hub.css'
 
+const MEComponent = (props) => {
+    return (<div>
+        <button id='OK' className={'button_choice'} >C'EST MOI</button>
+    </div>)
+}
+
 class Hub extends Component {
 
     state = {
@@ -14,21 +20,31 @@ class Hub extends Component {
             type: '',
             message: ''
         },
-        room_status: ''
+        room_status: '',
+        me: false
     };
 
-    componentDidMount() {
-        roomService.fetchRoomStatus()
-            .then(res => {
-                this.setState({
-                    alert_status: res.alertState === 'MOVEMENT'
-                })
-            });
+    componentWillMount() {
+        this.socketIO();
     }
 
-    socket = () => {
+    componentWillUpdate(nextProps, nextState, nextContext) {
+        setTimeout(() => {
+            this.socketIO()
+        }, 1500)
+    }
 
+    socketIO = () => {
+        roomService.fetchRoomStatus()
+            .then((res) => {
+                this.setState({
+                    alert_status: res[1].alertState === 'MOVEMENT',
+                    me: res[1].alertState === 'ALERT'
+                })
+
+            });
     };
+
 
     handleAlertBand = (alert) => {
         let newState = this.state;
@@ -43,7 +59,8 @@ class Hub extends Component {
     defuse = (evt) => {
         let alert = {status: true, type: 'success', message: 'Fausse alerte enregistrée !'};
         this.setState({
-            alert_status: false
+            alert_status: false,
+            me: false
         }, () => {
             this.handleAlertBand(alert);
             profileService.fetchDiffuse();
@@ -53,7 +70,8 @@ class Hub extends Component {
     intruder = (evt) => {
         let alert = {status: true, type: 'error', message: 'La sécurité a été alerté !'};
         this.setState({
-            alert_status: false
+            alert_status: false,
+            me: true
         }, () => {
             this.handleAlertBand(alert);
             profileService.fetchAlert();
@@ -63,7 +81,8 @@ class Hub extends Component {
     render() {
         let alert = this.state.alert_status;
         let alert_band = this.state.alert;
-        console.log(this.state.room_status);
+        let me = this.state.me;
+        console.log(me)
         return (
             <div id={'hub_wrapper'}>
                 <Alert alert={alert_band} handleAlert={this.handleAlertBand}/>
@@ -75,6 +94,8 @@ class Hub extends Component {
                         <p id={'hub_room'}>e4r5c3</p>
                         <p id={'hub_room_validity'}>7 jours</p>
                     </div>
+                    {me && <button id='OK' className={'button_choice'} onClick={this.defuse}>C'EST MOI</button>}
+                    {/*{me && <MEComponent onClick={this.defuse}/>}*/}
                     {alert &&
                     <div id={'alert_status'}>
                         <p id={'intruder_message'}>Une intrusion à été détectée !</p>

@@ -3,6 +3,7 @@ import {Button, Progress} from 'semantic-ui-react'
 import axios from 'axios'
 import './progress_bar.css'
 import profileService from '../../../services/profile-service'
+
 export default class ProgressBar extends Component {
     state = {
         end: false,
@@ -22,7 +23,7 @@ export default class ProgressBar extends Component {
         if (nextState.percent < 100) {
             this.incrementProgressBar(nextState.percent);
         } else {
-            profileService.fetchAlert();
+            // profileService.fetchAlert();
         }
     }
 
