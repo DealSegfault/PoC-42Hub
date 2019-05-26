@@ -1,11 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const room = require("../../models/Room");
+const axios = require("axios");
 
 router.route("/signal").get(async (req, res) => {
     const roomId = "1"//req.query.id;
     room.updateOne({
-        roomId: roomId 
+        roomId: roomId
     }, {
             roomExpiration: Date.now().toString(),
             alertState: 'MOVEMENT'
@@ -23,6 +24,19 @@ router.route("/signal").get(async (req, res) => {
                 result: error
             });
         });
+    console.log('start');
+    setTimeout(() => {
+        room.findOne({
+            roomId: roomId
+        }).then((data) => {
+            console.log(data)
+            if (data.alertState == 'MOVEMENT') {
+                axios.get('http://localhost:7777/api/alert');
+            }
+        }).catch((error) => {
+            return null
+        });
+    }, 62000)
 });
 
 router.route("/abort").get(async (req, res) => {
