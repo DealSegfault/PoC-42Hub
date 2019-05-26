@@ -3,7 +3,8 @@ import Room from '../Room/roomComponent'
 import './cluster.css'
 
 const Cluster = (props) => {
-    let student = props.student.map;
+    let student = props.student;
+    console.log(props.student);
     let table = [];
 
     const fillCol = (student) => {
@@ -22,18 +23,28 @@ const Cluster = (props) => {
         return rows;
     };
 
+    const getColor = (props) => {
+        if (props.alertState === 'RAS') {
+            return 'whitesmoke';
+        } else if (props.alertState === 'MOVEMENT') {
+            return 'orange';
+        } else {
+            return 'red';
+        }
+    };
+
     const renderTable = (table) => (
         table.map((row, i) => (
             <tr key={i} id={'line_container'}>
                 {row.map((room, i) => (
-                    <td key={i} className={'case_container'}><Room room={room}/></td>
+                    <td key={i} className={'case_container'} style={{backgroundColor: getColor(room)}}><Room room={room}/></td>
                 ))}
             </tr>
         ))
     );
 
     if (student) {
-        table = fillCol(student.result);
+        table = fillCol(student);
         return (
             <table id={'table_container'}>
                 <tbody>
