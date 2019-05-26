@@ -21,10 +21,14 @@ class Hub extends Component {
         roomService.fetchRoomStatus()
             .then(res => {
                 this.setState({
-                    alert_status: res.data.result[1].alertState === 'MOVEMENT'
+                    alert_status: res.alertState === 'MOVEMENT'
                 })
             });
     }
+
+    socket = () => {
+
+    };
 
     handleAlertBand = (alert) => {
         let newState = this.state;
