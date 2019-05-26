@@ -22,6 +22,5 @@ passport.use(new FortyTwoStrategy({
     // be associated with a user record in the application's database, which
     // allows for account linking and authentication with other identity
     // providers.
-    console.log("bonjour")
     return cb(null, profile);
   }));

@@ -5,16 +5,17 @@ const axios = require("axios");
 
 router.route("/signal").get(async (req, res) => {
     const roomId = "1"//req.query.id;
-    room.updateOne({
+    const timestamp = Date.now().toString();
+    await room.updateOne({
         roomId: roomId
     }, {
-            roomExpiration: Date.now().toString(),
+            roomExpiration: timestamp,
             alertState: 'MOVEMENT'
         })
         .then((value) => {
             res.json({
                 status: true,
-                time: Date.now(),
+                time: timestamp,
                 req: roomId,
                 result: value
             });
@@ -23,14 +24,13 @@ router.route("/signal").get(async (req, res) => {
                 status: false,
                 result: error
             });
-        });
-    console.log('start');
+        }); 
     setTimeout(() => {
         room.findOne({
             roomId: roomId
         }).then((data) => {
-            console.log(data)
-            if (data.alertState == 'MOVEMENT') {
+            console.log(timestamp, data.roomExpiration)
+            if (data.alertState == 'MOVEMENT' && timestamp == data.roomExpiration) {
                 axios.get('http://localhost:7777/api/alert');
             }
         }).catch((error) => {

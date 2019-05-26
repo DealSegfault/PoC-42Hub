@@ -29,7 +29,7 @@ const Cluster = (props) => {
         } else if (props.alertState === 'MOVEMENT') {
             return 'orange';
         } else {
-            return 'red';
+            return 'lightcoral';
         }
     };
 

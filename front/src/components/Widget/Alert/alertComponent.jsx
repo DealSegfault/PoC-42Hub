@@ -33,7 +33,7 @@ class Alert extends Component {
             alert.type = '';
             alert.message = '';
             this.props.handleAlert(alert);
-        }, 500)
+        }, 1000)
     };
 
     render() {
